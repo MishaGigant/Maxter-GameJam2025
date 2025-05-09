@@ -1,0 +1,172 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Monster : MonoBehaviour
+{
+    public Transform bodyPosition;
+    public ConveyorItem hat, head, body;
+    public Dictionary<NormalStats, int> monsterStats = new Dictionary<NormalStats, int>
+    {
+        {NormalStats.Health, 0},
+        {NormalStats.Speed, 0},
+        {NormalStats.Damage, 0},
+        {NormalStats.AttackSpeed, 0},
+        {NormalStats.CritChance, 0},
+        {NormalStats.CritDamage, 0},
+    };
+
+    public enum Team { Player, Enemy }
+    public Team team;
+    public float attackRange = 1f;
+    public float attackRate = 2f;
+
+    public Transform rayDetectionPos;
+
+    private bool isMoving = true;
+    private bool isAttacking = false;
+    private bool facingRight;
+    private float timeBtwAttack = 2f;
+    public Animator animator;
+    private Monster currentTarget;
+    public void Start()
+    {
+
+        attackRange = 3f;
+        timeBtwAttack = attackRate;
+
+        if (team == Team.Player)
+            facingRight = true;
+        else if (team == Team.Enemy)
+            facingRight = false;
+
+        if (!facingRight)
+            Flip();
+        // Начинаем движение
+        isMoving = true;
+        isAttacking = false;
+    }
+    private void Update()
+    {
+        if (isAttacking)
+        {
+            if (timeBtwAttack <= 0)
+                AttackTarget();
+            else
+                timeBtwAttack -= Time.deltaTime;
+            return;
+        }
+        // Проверка перед собой с помощью Raycast
+        CheckForObstacles();
+        if (!isMoving) return;
+
+        // Движение персонажа
+        float moveDirection = facingRight ? 1 : -1;
+        transform.Translate(Vector2.right * (moveDirection * monsterStats[NormalStats.Speed] * Time.deltaTime));
+
+    }
+
+    private void CheckForObstacles()
+    {
+        Vector2 rayDirection = facingRight ? Vector2.right : Vector2.left;
+        RaycastHit2D hit = Physics2D.Raycast(rayDetectionPos.position, rayDirection, attackRange);
+
+        if (hit.collider != null)
+        {
+            Monster otherMonster = hit.collider.GetComponent<Monster>();
+
+            if (otherMonster != null)
+            {
+                if (otherMonster.team != team) // Противник
+                {
+                    isMoving = false;
+                    animator.SetBool("isMoving", false);
+                    currentTarget = otherMonster;
+                    isAttacking = true;
+                }
+                else // Союзник
+                {
+                    // Стоим на месте, пока союзник не уйдёт
+                    isMoving = false;
+                    animator.SetBool("isMoving", false);
+                }
+            }
+        }
+        else // Никого нет перед нами
+        {
+            isMoving = true;
+            isAttacking = false;
+            animator.SetBool("isMoving", true);
+        }
+    }
+
+    private void AttackTarget()
+    {
+        isAttacking = false;
+        animator.SetBool("isAttacking", true);
+    }
+    public void DealDamage()
+    {
+        currentTarget.TakeDamage(this);
+    }
+    public void ResetAttack()
+    {
+        timeBtwAttack = attackRate;
+        animator.SetBool("isAttacking", false);
+    }
+
+    public void TakeDamage(Monster attacker)
+    {
+        monsterStats[NormalStats.Health] -= attacker.monsterStats[NormalStats.Damage];
+
+        if (monsterStats[NormalStats.Health] <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Можно добавить эффекты смерти, анимацию и т.д.
+        Destroy(gameObject);
+    }
+
+    public void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+    }
+
+    // Для визуализации Raycast в редакторе
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Vector2 rayDirection = facingRight ? Vector2.right : Vector2.left;
+        Gizmos.DrawLine(rayDetectionPos.position, rayDetectionPos.position + (Vector3)rayDirection * attackRange);
+    }
+
+    public void MakeMonster(ConveyorItem hatToSet, ConveyorItem headToSet, ConveyorItem bodyToSet)
+    {
+       body = Instantiate(bodyToSet, bodyPosition.position, Quaternion.identity, this.transform);
+        SetStats(bodyToSet);
+        rayDetectionPos = body.rayCastPoint;
+        animator = body.GetComponent<Animator>();
+        head = Instantiate(headToSet, body.connector.position, Quaternion.identity, this.transform);
+        SetStats(headToSet);
+        hat = Instantiate(hatToSet, head.connector.position, Quaternion.identity, this.transform);
+        SetStats(hatToSet);
+
+        for (int i = 0; i < monsterStats.Count; i++)
+        {
+            Debug.Log((NormalStats)i + " is " + monsterStats[(NormalStats)i]);   
+        }
+
+    }
+    public void SetStats(ConveyorItem item)
+    {
+        monsterStats[item.itemStats.firstStat] += item.itemStats.firstStatValue;
+        monsterStats[item.itemStats.secondStat] += item.itemStats.secondStatValue;
+        monsterStats[item.itemStats.randomStat] += item.itemStats.randomStatValue;
+    }
+
+}
