@@ -71,4 +71,5 @@ public class GameManager : MonoBehaviour
             MakeMonster();
         }
     }
+
 }
