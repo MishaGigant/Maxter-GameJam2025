@@ -50,6 +50,7 @@ public class ConveyorItem : MonoBehaviour
     {
         if (currentPosition == 3)
         {
+            Conveyor.onMoveItems -= StartMovement;
             Destroy(this.gameObject);
         }
     }
@@ -64,11 +65,11 @@ public class ConveyorItem : MonoBehaviour
         statWindow.randomStat.text = (StatsDictionary.normalStatText[itemStats.randomStat] + itemStats.randomStatValue);
         if (itemStats.randomStatValue < 0)
         {
-            statWindow.randomStat.color = new Color32(255, 120, 120, 255);
+            statWindow.randomStat.color = new Color32(170, 0, 0, 255);
         }
         else
         {
-            statWindow.randomStat.color = new Color32(143, 255, 121, 255);
+            statWindow.randomStat.color = new Color32(0, 222, 0, 255);
         }
     }
 

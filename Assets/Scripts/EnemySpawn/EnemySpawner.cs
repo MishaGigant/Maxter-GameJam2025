@@ -5,6 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public bool isWorking;
     public float spawnRate;
+    public int enemyLevel;
 
     public Transform spawnPos;
 
