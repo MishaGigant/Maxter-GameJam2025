@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class ProductionWindow : MonoBehaviour
 {
+<<<<<<< Updated upstream
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+=======
     public int[] cost;
-    public string[] skinName;
-    public bool[] isBought;
+    public string[] itemName;
+    public int itemID;
     public int equipedSkin;
-    public TMPro.TextMeshPro nameText, costText, equipText;
-    public Transform costParent, equipParent;
+    public TMPro.TextMeshPro nameText, costText;
     public SpriteRenderer windowSprite;
-    public int skinID;
+    public Sprite[] sprites;
     public AudioManager src;
+    public Conveyor conveyor;
+    public GameManager gameManager;
 
     public void Start()
     {
@@ -19,79 +33,58 @@ public class ProductionWindow : MonoBehaviour
     }
     public void UpdatePage()
     {
-        nameText.text = skinName[skinID];
-        if (isBought[skinID])
+        nameText.text = itemName[itemID];
+        if (itemID == equipedSkin)
         {
-            costParent.gameObject.SetActive(false);
-            equipParent.gameObject.SetActive(true);
-            if (equipedSkin == skinID)
-            {
-                windowSprite.sprite = Resources.LoadAll<Sprite>("Mirror window bought")[0];
-                equipText.text = "Equiped";
-            }
-            else
-            {
-                windowSprite.sprite = Resources.LoadAll<Sprite>("Mirror window")[0];
-                equipText.text = "Equip";
-            }
+            costText.text = "Создание";
+            windowSprite.sprite = sprites[1];
         }
         else
         {
-            windowSprite.sprite = Resources.LoadAll<Sprite>("Mirror window")[0];
-            costParent.gameObject.SetActive(true);
-            equipParent.gameObject.SetActive(false);
-            costText.text = cost[skinID].ToString();
+            windowSprite.sprite = sprites[0];
+            costText.text = cost[conveyor.conveyorLevel - 1].ToString();
         }
 
     }
 
-    public void NextSkin()
+    public void NextItem()
     {
-        if (skinID == skinName.Length - 1)
+        if (itemID == itemName.Length - 1)
         {
-            skinID = 0;
+            itemID = 0;
         }
         else
         {
-            skinID++;
+            itemID++;
         }
-        src.Play(skinName[skinID]);
+        //src.Play(itemName[itemID]);
         UpdatePage();
     }
 
     public void PrevSkin()
     {
-        if (skinID == 0)
+        if (itemID == 0)
         {
-            skinID = skinName.Length - 1;
+            itemID = itemName.Length - 1;
         }
         else
         {
-            skinID--;
+            itemID--;
         }
-        src.Play(skinName[skinID]);
+        //src.Play(itemName[itemID]);
         UpdatePage();
     }
 
-    public void BuySkin()
+    public void BuyItem()
     {
-        //if (!isBought[skinID] && moneyCount.moneyCount >= cost[skinID])
-        //{
-            //moneyCount.moneyCount -= cost[skinID];
-            src.Play("Upgrade bought");
-            isBought[skinID] = true;
-            UpdatePage();
-        //}
-        //else if (isBought[skinID] && skinID != equipedSkin)
+        if (equipedSkin != itemID && gameManager.moneyCount >= cost[conveyor.conveyorLevel - 1])
         {
-            equipedSkin = skinID;
+            gameManager.moneyCount -= cost[itemID];
+            //src.Play("Upgrade bought");
+            equipedSkin = itemID;
             UpdatePage();
-            //momo.anim.runtimeAnimatorController = momoSkinController[equipedSkin] as RuntimeAnimatorController;
         }
     }
 
-    public void LoadSkin()
-    {
-        //momo.anim.runtimeAnimatorController = momoSkinController[equipedSkin] as RuntimeAnimatorController;
-    }
+>>>>>>> Stashed changes
 }
