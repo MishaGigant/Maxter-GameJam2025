@@ -33,6 +33,7 @@ public class ConveyorItem : MonoBehaviour
     public ItemStats itemStats;
 
     public bool canMove;
+    public bool isCreated;
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class ConveyorItem : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        
+        if (isCreated) return;
         statWindow.gameObject.SetActive(true);
         statWindow.itemName.text = itemName;
         statWindow.whiteStatOne.text = (StatsDictionary.normalStatText[itemStats.firstStat] + itemStats.firstStatValue);
@@ -63,6 +64,7 @@ public class ConveyorItem : MonoBehaviour
 
     public void OnMouseOver()
     {
+        if (isCreated) return;
         if (isDestroyed) {  return; }
         statWindow.gameObject.SetActive(true);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -71,11 +73,13 @@ public class ConveyorItem : MonoBehaviour
 
     public void OnMouseExit()
     {
+        if (isCreated) return;
         statWindow.gameObject.SetActive(false);
     }
 
     public void OnMouseDown()
     {
+        if (isCreated) return;
         statWindow.gameObject.SetActive(false);
         isDestroyed = true;
         int i = itemLevel * 25;

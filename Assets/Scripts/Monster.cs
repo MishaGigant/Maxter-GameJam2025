@@ -20,10 +20,12 @@ public class Monster : MonoBehaviour
     public float attackRange = 1f;
     public float attackRate = 2f;
 
+    public LayerMask entityLayer;
+
     public Transform rayDetectionPos;
 
-    private bool isMoving = true;
-    private bool isAttacking = false;
+    [SerializeField]private bool isMoving = true;
+    [SerializeField] private bool isAttacking = false;
     private bool facingRight;
     private float timeBtwAttack = 2f;
     public Animator animator;
@@ -68,18 +70,18 @@ public class Monster : MonoBehaviour
     private void CheckForObstacles()
     {
         Vector2 rayDirection = facingRight ? Vector2.right : Vector2.left;
-        RaycastHit2D hit = Physics2D.Raycast(rayDetectionPos.position, rayDirection, attackRange);
+        RaycastHit2D hit = Physics2D.Raycast(rayDetectionPos.position, rayDirection, attackRange, entityLayer);
 
         if (hit.collider != null)
         {
-            Monster otherMonster = hit.collider.GetComponent<Monster>();
+            Monster otherMonster = hit.collider.GetComponentInParent<Monster>();
 
             if (otherMonster != null)
             {
                 if (otherMonster.team != team) // Противник
                 {
                     isMoving = false;
-                    animator.SetBool("isMoving", false);
+                    //animator.SetBool("isMoving", false);
                     currentTarget = otherMonster;
                     isAttacking = true;
                 }
@@ -87,7 +89,7 @@ public class Monster : MonoBehaviour
                 {
                     // Стоим на месте, пока союзник не уйдёт
                     isMoving = false;
-                    animator.SetBool("isMoving", false);
+                    //animator.SetBool("isMoving", false);
                 }
             }
         }
@@ -95,7 +97,7 @@ public class Monster : MonoBehaviour
         {
             isMoving = true;
             isAttacking = false;
-            animator.SetBool("isMoving", true);
+            //animator.SetBool("isMoving", true);
         }
     }
 
@@ -147,20 +149,36 @@ public class Monster : MonoBehaviour
 
     public void MakeMonster(ConveyorItem hatToSet, ConveyorItem headToSet, ConveyorItem bodyToSet)
     {
-       body = Instantiate(bodyToSet, bodyPosition.position, Quaternion.identity, this.transform);
+        body = Instantiate(bodyToSet, bodyPosition.position, Quaternion.identity, this.transform);
         SetStats(bodyToSet);
+        body.isCreated = true;
         rayDetectionPos = body.rayCastPoint;
         animator = body.GetComponent<Animator>();
+
         head = Instantiate(headToSet, body.connector.position, Quaternion.identity, this.transform);
         SetStats(headToSet);
+        head.isCreated = true;
+
         hat = Instantiate(hatToSet, head.connector.position, Quaternion.identity, this.transform);
         SetStats(hatToSet);
+        hat.isCreated = true;
 
         for (int i = 0; i < monsterStats.Count; i++)
         {
-            Debug.Log((NormalStats)i + " is " + monsterStats[(NormalStats)i]);   
+            Debug.Log((NormalStats)i + " is " + monsterStats[(NormalStats)i]);
         }
 
+
+        if (team == Team.Player)
+            facingRight = true;
+        else if (team == Team.Enemy)
+            facingRight = false;
+
+        if (!facingRight)
+            Flip();
+        // Начинаем движение
+        isMoving = true;
+        isAttacking = false;
     }
     public void SetStats(ConveyorItem item)
     {
