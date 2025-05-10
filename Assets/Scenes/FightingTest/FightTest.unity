@@ -419,6 +419,7 @@ MonoBehaviour:
       hatPrefab: {fileID: 0}
       headPrefab: {fileID: 0}
       bodyPrefab: {fileID: 0}
+  waveInfoTabel: {fileID: 0}
 --- !u!1 &1748859504
 GameObject:
   m_ObjectHideFlags: 0

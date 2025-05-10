@@ -1319,8 +1319,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0412\u043E\u043B\u043D\u0430 \u2116"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 73fa8aad0e276954e92008ca6c979f0d, type: 2}
+  m_sharedMaterial: {fileID: 755499943448478153, guid: 73fa8aad0e276954e92008ca6c979f0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1838,16 +1838,23 @@ MonoBehaviour:
   spawnPos: {fileID: 721728813}
   monsterPrefab: {fileID: 3018009443793939377, guid: 63927ed8bbd0c11499e05958dc142a04, type: 3}
   hatPrefabs:
-  - {fileID: -490113726810191988, guid: 441eab72ac691844da79659ecfabb18c, type: 3}
-  - {fileID: 7760082895668281440, guid: 5c2d78a3c5df8d744aa61ce1f0f6b8a4, type: 3}
+  - {fileID: 6214124312827537861, guid: 573156c948861ee46a0eabffc777f934, type: 3}
+  - {fileID: 3152173614642918576, guid: 688ae9d1db9c5804985281076508b924, type: 3}
+  - {fileID: 4387074436993088410, guid: 901bd61f33c8fe143a194b9bdde6cab5, type: 3}
+  - {fileID: 1021974127456052731, guid: cb3d49488876e1240972301b6d5ca1d5, type: 3}
+  - {fileID: 890622700094627845, guid: bcb7846e0b090eb4d87d540235b772fa, type: 3}
   headPrefabs:
-  - {fileID: 727103975518740728, guid: 36667c3764658144694c9b90b71d2c75, type: 3}
-  - {fileID: 5257744175332254720, guid: c12fa659ea5d9ed4ea2ba1a3cf92b7f4, type: 3}
-  - {fileID: 6924066006160971506, guid: 93898904a2c903546871aa2608e97940, type: 3}
+  - {fileID: 6291204862340887064, guid: 8bc7e5a7003258248a0e84789c741005, type: 3}
+  - {fileID: 1382413345904367109, guid: 16be052a84663174c9ce57757bff758b, type: 3}
+  - {fileID: 429179231270535288, guid: 2847bcbef5d9d4e46b1f7f6e1ef72f12, type: 3}
+  - {fileID: 1710337933291852792, guid: 6f00b554ba456ec45ae36542275a9016, type: 3}
+  - {fileID: 5571665586486288840, guid: d61e494fc2273d6488cdb5c380828b98, type: 3}
   bodyPrefabs:
-  - {fileID: 2238909708818345524, guid: 7d4cb131790ec924d91dab1c5cd089a1, type: 3}
-  - {fileID: 4250868186801877181, guid: ed8f61055231b7a4693a3721650306e9, type: 3}
-  - {fileID: 5696551422439513552, guid: eebcc8b4d83ba9b4a8ccc01d819f621d, type: 3}
+  - {fileID: 2708661293366221467, guid: 92f3f020eedc7cb48875e6bd62deb6bb, type: 3}
+  - {fileID: 1739223929548183113, guid: 23e60c4666d85ba46814254eb4936d01, type: 3}
+  - {fileID: 7378458976805526677, guid: 7208ebe310250694da233b2c638aecdb, type: 3}
+  - {fileID: 4999989897761810808, guid: 42771d44aaa322b40981c6de767e9107, type: 3}
+  - {fileID: 867850847898265156, guid: 64f1637df1896ac4a9ccead413ab6c0e, type: 3}
   currentWave: -1
   currentWavePart: 0
   currentEnemyNum: 0
@@ -3373,7 +3380,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f50fc7d9ddf65ca48980e47fdf88bb57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

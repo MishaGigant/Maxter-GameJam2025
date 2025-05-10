@@ -31,6 +31,7 @@ public class Monster : MonoBehaviour
     private Monster currentTarget;
 
     public HealthBar healthBar;
+    public FloatingText floatingText;
     public void Start()
     {
         timeBtwAttack = attackRate;
@@ -48,6 +49,8 @@ public class Monster : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+            TakeDamage(this);
         if (isAttacking)
         {
             if (timeBtwAttack <= 0)
@@ -117,18 +120,42 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(Monster attacker)
     {
-        int totalDamage = attacker.monsterStats[NormalStats.Damage]; //TODO резисты, крит урон, слабости
-        monsterStats[NormalStats.Health] -= totalDamage;
+        
+        int damage = CalculateDamage(attacker.monsterStats[NormalStats.Damage], attacker.itemConstantStats["Body"]); 
+        monsterStats[NormalStats.Health] -= damage;
 
-        healthBar.TakeDamage(totalDamage);
+        healthBar.TakeDamage(damage);
+
+        floatingText.ChangeText(damage.ToString());
+        floatingText.ChangeAnimationState();
+        
+
 
         if (monsterStats[NormalStats.Health] <= 0)
         {
             Die();
         }
     }
+    private int CalculateDamage(int dmg, ItemConstantStats dmgType)
+    {
+        int totalDamage = dmg;
+        // Генерируем случайное число от 0 до 1
+        float randomValue = Random.Range(0, 101);
 
-    private void Die()
+        bool isCritical = randomValue <= monsterStats[NormalStats.CritChance];
+
+        if (isCritical)
+            totalDamage = dmg * (100 + monsterStats[NormalStats.CritDamage])/100; // 100% (базовый) + крит дамаг
+        
+        //Применить резист и слабость
+        if(dmgType == itemConstantStats["Head"])
+            totalDamage /= 2;
+        if (dmgType == itemConstantStats["Hat"])
+            totalDamage *= 2;
+
+        return totalDamage;
+    }
+    public virtual void Die()
     {
         // Можно добавить эффекты смерти, анимацию и т.д.
         Destroy(gameObject);
