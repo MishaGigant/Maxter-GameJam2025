@@ -2,19 +2,6 @@ using UnityEngine;
 
 public class ProductionWindow : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-=======
     public int[] cost;
     public string[] itemName;
     public int itemID;
@@ -86,5 +73,4 @@ public class ProductionWindow : MonoBehaviour
         }
     }
 
->>>>>>> Stashed changes
 }
