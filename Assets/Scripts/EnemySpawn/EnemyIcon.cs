@@ -27,13 +27,12 @@ public class EnemyIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        enemyInfoTable.gameObject.SetActive(true);
         enemyInfoTable.GetComponent<RectTransform>().position = infoTableSpawnPos.position;
         enemyInfoTable.SetMonsterInfo(monsterInfo);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        enemyInfoTable.gameObject.SetActive(false);
+        enemyInfoTable.SetTabelView(false);
     }
 }

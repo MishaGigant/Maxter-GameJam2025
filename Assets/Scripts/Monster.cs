@@ -29,6 +29,8 @@ public class Monster : MonoBehaviour
     private float timeBtwAttack = 2f;
     public Animator animator;
     private Monster currentTarget;
+
+    public HealthBar healthBar;
     public void Start()
     {
         timeBtwAttack = attackRate;
@@ -115,7 +117,10 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(Monster attacker)
     {
-        monsterStats[NormalStats.Health] -= attacker.monsterStats[NormalStats.Damage];
+        int totalDamage = attacker.monsterStats[NormalStats.Damage]; //TODO резисты, крит урон, слабости
+        monsterStats[NormalStats.Health] -= totalDamage;
+
+        healthBar.TakeDamage(totalDamage);
 
         if (monsterStats[NormalStats.Health] <= 0)
         {
@@ -180,6 +185,10 @@ public class Monster : MonoBehaviour
 
         if (!facingRight)
             Flip();
+
+        //Хп бар
+        healthBar.Setup(monsterStats[NormalStats.Health]);
+
         // Начинаем движение
         isMoving = true;
         isAttacking = false;

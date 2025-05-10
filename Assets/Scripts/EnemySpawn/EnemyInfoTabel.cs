@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyInfoTable : MonoBehaviour
 {
     public Image[] imageType;
+    public GameObject tabel;
 
     public Sprite[] allTypeOfConstantStats; //0 - базовый, 1 - огненный, 2 - ледяной, 3 - спуки, 4 - святой
     private Dictionary<ItemConstantStats, Sprite> itemConstantStatsDict;
@@ -32,8 +33,15 @@ public class EnemyInfoTable : MonoBehaviour
 
         };
     }
+    public void SetTabelView(bool view)
+    {
+        tabel.SetActive(view);
+    }
     public void SetMonsterInfo(MonsterInfo m)
     {
+        if (m.isRandom)
+            return;
+        SetTabelView(true);
         imageType[0].sprite = itemConstantStatsDict[m.bodyPrefab.itemStats.constantStat];
         imageType[1].sprite = itemConstantStatsDict[m.headPrefab.itemStats.constantStat];
         imageType[2].sprite = itemConstantStatsDict[m.hatPrefab.itemStats.constantStat];

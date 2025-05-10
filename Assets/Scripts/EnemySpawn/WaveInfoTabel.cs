@@ -33,7 +33,7 @@ public class WaveInfoTabel : MonoBehaviour
         if(currentEnemyLeft == 0)
         {
             icons[currentWavePart].gameObject.SetActive(false);
-            icons[currentWavePart].enemyInfoTable.gameObject.SetActive(false);
+            icons[currentWavePart].enemyInfoTable.SetTabelView(false);
         }
 
     }
