@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8001a3d8b74d74340b250cb0f4b4a48c
+guid: de10a2babe4793e4ba7915480f6b5eb9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6964012747022915484
-    second: 10 (2)_0
+      213: -8510727349376626655
+    second: "\u043A\u043D\u043E\u043F\u043E\u0447\u043A\u0430_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,27 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 10 (2)_0
+      name: "\u043A\u043D\u043E\u043F\u043E\u0447\u043A\u0430_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 650
-        height: 750
-      alignment: 9
-      pivot: {x: 0.5071, y: 0.036743976}
+        x: 252
+        y: 306
+        width: 196
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c97d79d42b425a060800000000000000
-      internalID: 6964012747022915484
+      spriteID: 12054384192d3e980800000000000000
+      internalID: -8510727349376626655
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3f4264fe7c3fc2243b26eaf382f8ea48
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      10 (2)_0: 6964012747022915484
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
