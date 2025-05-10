@@ -6,13 +6,22 @@ public class ItemCreator : MonoBehaviour
     public GameObject conveyorItem;
     public GameObject[] itemsToMake;
     public StatWindow statWindow;
+    public ProductionWindow productionWindow;
     public void CreateItem()
     {
         if (conveyor.conveyorItems[0] != null)
         {
             return;
         }
-        conveyorItem = Instantiate(itemsToMake[Random.Range(0, conveyor.conveyorLevel)], conveyor.itemSlots[0].position, Quaternion.identity, conveyor.transform);
+        int i = productionWindow.equipedSkin;
+        if( i == 0)
+        {
+            conveyorItem = Instantiate(itemsToMake[Random.Range(0, conveyor.conveyorLevel)], conveyor.itemSlots[0].position, Quaternion.identity, conveyor.transform);
+        }
+        else
+        {
+            conveyorItem = Instantiate(itemsToMake[i - 1], conveyor.itemSlots[0].position, Quaternion.identity, conveyor.transform);
+        }
         ConveyorItem item = conveyorItem.GetComponent<ConveyorItem>();
         item.conveyor = conveyor;
         item.statWindow = statWindow;
