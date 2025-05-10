@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
     public Wave[] waves;
 
+    public WaveInfoTabel waveInfoTabel;
+
     private void Start()
     {
         StartNewWave();
@@ -35,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
         if (isWorking)
         {
             currentEnemyNum++;
+            waveInfoTabel.UpdateInfo(currentWavePart, amountOfEnemyToSpawn - currentEnemyNum);
             if (currentEnemyNum <= amountOfEnemyToSpawn)
             {
                 if (currentWaveEnemyType == WaveEnemyType.Random)
@@ -56,7 +59,6 @@ public class EnemySpawner : MonoBehaviour
                     StartNewWave();
                 }
             }
-
             StartCoroutine(SpawnTimer());
         }
 
@@ -74,6 +76,8 @@ public class EnemySpawner : MonoBehaviour
         amountOfWavePart = waves[currentWave].amoutOfEnemyForEachType.Length-1;
         amountOfEnemyToSpawn = waves[currentWave].amoutOfEnemyForEachType[currentWavePart];
         currentWaveEnemyType = waves[currentWave].waveEnemySpawnType[0];
+
+        waveInfoTabel.SetNewEnemyIcons(waves[currentWave], currentWave);
     }
     public void StartNewWavePart()
     {

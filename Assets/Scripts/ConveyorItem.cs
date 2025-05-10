@@ -12,6 +12,7 @@ public class ConveyorItem : MonoBehaviour
     public static Action<ConveyorItem> onSendIntoMachine;
     public int currentPosition;
     private float currentTime;
+    public Sprite sprite;
     public Transform connector;
     public Collider2D cd;
     public StatWindow statWindow;

@@ -54,6 +54,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   conveyor: {fileID: 0}
   currentPosition: 0
+  sprite: {fileID: -3009124135270126010, guid: a7d80f64abb53664ba21ed283d348fb6, type: 3}
   connector: {fileID: 8598113664828494372}
   cd: {fileID: 0}
   statWindow: {fileID: 0}
@@ -63,6 +64,7 @@ MonoBehaviour:
   itemLevel: 0
   itemStats: {fileID: 2344365643732909407}
   canMove: 0
+  isCreated: 0
 --- !u!114 &2344365643732909407
 MonoBehaviour:
   m_ObjectHideFlags: 0
