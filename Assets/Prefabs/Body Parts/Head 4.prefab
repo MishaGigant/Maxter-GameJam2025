@@ -112,6 +112,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   conveyor: {fileID: 0}
   currentPosition: 0
+  sprite: {fileID: 5279938445171467555, guid: bf5a6892a94a1a74eb4dff10e8d3797b, type: 3}
   connector: {fileID: 5722106283490621953}
   cd: {fileID: 0}
   statWindow: {fileID: 0}

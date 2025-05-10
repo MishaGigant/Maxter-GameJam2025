@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7660377, g: 0.13730857, b: 0.13730857, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -98,6 +98,7 @@ MonoBehaviour:
   iconImage: {fileID: 9025217191885372813}
   amountText: {fileID: 6230263875433054105}
   infoTableSpawnPos: {fileID: 154738212479394443}
+  enemyInfoTable: {fileID: 0}
 --- !u!1 &3445836139671453396
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000000046566, y: -0.4464}
+  m_AnchoredPosition: {x: -0.000000046566, y: -0.75}
   m_SizeDelta: {x: 0.6209, y: 0.6128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4495162165763369066
@@ -165,8 +166,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 73fa8aad0e276954e92008ca6c979f0d, type: 2}
+  m_sharedMaterial: {fileID: 755499943448478153, guid: 73fa8aad0e276954e92008ca6c979f0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
