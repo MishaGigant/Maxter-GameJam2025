@@ -53,6 +53,11 @@ MonoBehaviour:
   conveyor: {fileID: 0}
   currentPosition: 0
   connector: {fileID: 0}
+  cd: {fileID: 0}
+  statWindow: {fileID: 0}
+  rayCastPoint: {fileID: 0}
+  animator: {fileID: 0}
+  isDestroyed: 0
   itemLevel: 0
   itemStats: {fileID: 8651974744653744479}
   canMove: 0
@@ -113,8 +118,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.26035213, y: 0.26500106}
-  m_Radius: 0.78359747
+  m_Offset: {x: -0.051582098, y: -0.08159202}
+  m_Radius: 0.26948476
 --- !u!1 &4889631874064608033
 GameObject:
   m_ObjectHideFlags: 0
