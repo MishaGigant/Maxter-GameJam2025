@@ -215,7 +215,7 @@ public class StatsDictionary : MonoBehaviour
     public static readonly Dictionary<string, StatInfo> constantStatPair = new Dictionary<string, StatInfo>
     {
         {"Лисёнок", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление обычному урону") },
-        {"Толстый", new StatInfo(ItemConstantStats.NormalRes, "Тип урона: обычный") },
+        {"Толстый", new StatInfo(ItemConstantStats.NormalDmg, "Тип урона: обычный") },
         {"Цилиндр", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к обычному урону") },
         {"Габриель", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление святому урону") },
         {"Правидный", new StatInfo(ItemConstantStats.NormalRes, "Тип урона: святой") },
