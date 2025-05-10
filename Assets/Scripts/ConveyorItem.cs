@@ -20,6 +20,7 @@ public class ConveyorItem : MonoBehaviour
     public Animator animator;
 
     public static Action<int> onItemClick;
+    public static Action onItemStopMoving;
     public bool isDestroyed;
 
     private Vector3 startPosition;
@@ -42,8 +43,16 @@ public class ConveyorItem : MonoBehaviour
         cd = GetComponent<Collider2D>();
         currentPosition = 0;
         Conveyor.onMoveItems += StartMovement;
+        GameManager.onItemsUsed += DeleteItem;
     }
 
+    public void DeleteItem()
+    {
+        if (currentPosition == 3)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     public void OnMouseEnter()
     {
         if (isCreated) return;
@@ -124,12 +133,12 @@ public class ConveyorItem : MonoBehaviour
             currentPosition += 1;
             conveyor.conveyorItems[currentPosition] = this;
             canMove = false;
+            onItemStopMoving.Invoke();
             if (currentPosition == 3)
             {
                 Conveyor.onMoveItems -= StartMovement;
                 onSendIntoMachine.Invoke(this);
                 conveyor.conveyorItems[currentPosition] = null;
-                Destroy(gameObject);
 
             }
         }

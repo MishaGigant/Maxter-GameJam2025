@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ItemCreator : MonoBehaviour
 {
@@ -7,6 +8,11 @@ public class ItemCreator : MonoBehaviour
     public GameObject[] itemsToMake;
     public StatWindow statWindow;
     public ProductionWindow productionWindow;
+
+    public void Start()
+    {
+        ConveyorItem.onItemStopMoving += CreateItem;
+    }
     public void CreateItem()
     {
         if (conveyor.conveyorItems[0] != null)
@@ -29,4 +35,5 @@ public class ItemCreator : MonoBehaviour
         item.itemStats.GetStats(item);
         item.conveyor.conveyorItems[0] = item;
     }
+
 }

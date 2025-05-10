@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +9,8 @@ public class GameManager : MonoBehaviour
     public Conveyor[] conveyors;
     public Transform spawn;
     private int count;
+    public ItemCreator[] creators;
+    public static Action onItemsUsed;
 
     public int moneyCount;
 
@@ -15,9 +19,20 @@ public class GameManager : MonoBehaviour
         Conveyor.onToCraft += CheckForCraft;
         ConveyorItem.onSendIntoMachine += PrepareForCraft;
         ConveyorItem.onItemClick += UpdateMoney;
+        ConveyorItem.onItemStopMoving += CreateAllItems;
+        CreateAllItems();
 
+        StartCoroutine(MoveItemsCooldown());
     }
 
+    public void CreateAllItems()
+    {
+        for (int i = 0; i < creators.Length; i++)
+        {
+            creators[i].CreateItem();
+        }
+        StartCoroutine(MoveItemsCooldown());
+    }
     public void UpdateMoney(int moneyToAdd)
     {
         moneyCount += moneyToAdd;
@@ -69,7 +84,22 @@ public class GameManager : MonoBehaviour
         if (count == 3)
         {
             MakeMonster();
+            onItemsUsed.Invoke();
         }
     }
 
+    public IEnumerator MoveItemsCooldown()
+    {
+        yield return new WaitForSecondsRealtime(10f);
+        StartConveyors();
+    }
+
+    public void StartConveyors()
+    {
+        for (int i = 0; i < conveyors.Length; i++)
+        {
+            conveyors[i].MoveItems();
+        }
+        MoveItemsCooldown();
+    }
 }
