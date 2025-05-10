@@ -216,12 +216,19 @@ public class StatsDictionary : MonoBehaviour
     {
         {"Лисёнок", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление обычному урону") },
         {"Толстый", new StatInfo(ItemConstantStats.NormalDmg, "Тип урона: обычный") },
-        {"Цилиндр", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к обычному урону") },
+        {"Конус", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к обычному урону") },
         {"Габриель", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление святому урону") },
         {"Правидный", new StatInfo(ItemConstantStats.NormalRes, "Тип урона: святой") },
         {"Нимб", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к святому урону") },
         {"Мишка", new StatInfo(ItemConstantStats.NormalRes, "Тип урона: страшный") },
-        {"Фредди", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление страшному урону") }
+        {"Фредди", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление страшному урону") },
+        {"Цилиндр", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к страшному урону") },
+        {"Скользский", new StatInfo(ItemConstantStats.NormalRes, "Тип урона: холодный") },
+        {"Пороро", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление холодному урону") },
+        {"Парик", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к холодному урону") },
+        {"Горячий", new StatInfo(ItemConstantStats.NormalRes, "Тип урона: огненный") },
+        {"Володя", new StatInfo(ItemConstantStats.NormalRes, "Сопротивление огненному урону") },
+        {"Бантик", new StatInfo(ItemConstantStats.NormalRes, "Уязвимость к огненному урону") },
     };
     public static readonly Dictionary<int, Dictionary<NormalStats, StatRange>> randomStatAligment = new Dictionary<int, Dictionary<NormalStats, StatRange>>
     {

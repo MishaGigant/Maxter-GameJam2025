@@ -17,11 +17,11 @@ public class Conveyor : MonoBehaviour
 
     public void MoveItems()
     {
-        for (int i = 3; i != -1; i--)
+        for (int i = 2; i != -1; i--)
         {
             if (conveyorItems[i] != null)
             {
-                if (i == 3)
+                if (i == 2)
                 {
                     onToCraft.Invoke();
                 }

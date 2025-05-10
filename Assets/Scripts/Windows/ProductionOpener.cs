@@ -1,23 +1,23 @@
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-
-public class UpgradeOpener : WindowOpener
+public class ProductionOpener : WindowOpener
 {
-    public UpgradeWindow window;
+    public ProductionWindow window;
 
     public override void Open()
     {
         WindowController.onWindowOpen?.Invoke();
         isOpen = true;
         window.gameObject.SetActive(true);
-        window.UpdateInfo();
+
     }
     public override void Close()
     {
         if (isOpen)
         {
             isOpen = false;
-            window.UpdateInfo();
+
             window.gameObject.SetActive(false);
         }
 

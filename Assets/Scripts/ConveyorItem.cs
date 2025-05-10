@@ -123,7 +123,7 @@ public class ConveyorItem : MonoBehaviour
             currentPosition += 1;
             conveyor.conveyorItems[currentPosition] = this;
             canMove = false;
-            if (currentPosition == 4)
+            if (currentPosition == 3)
             {
                 Conveyor.onMoveItems -= StartMovement;
                 onSendIntoMachine.Invoke(this);

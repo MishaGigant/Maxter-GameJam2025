@@ -43,11 +43,11 @@ public class GameManager : MonoBehaviour
 
     public void CheckForCraft()
     {
-        if (conveyors[0].conveyorItems[3] !=null && conveyors[1].conveyorItems[3] != null && conveyors[2].conveyorItems[3] != null)
+        if (conveyors[0].conveyorItems[2] !=null && conveyors[1].conveyorItems[2] != null && conveyors[2].conveyorItems[2] != null)
         {
-            conveyors[0].conveyorItems[3].canMove = true;
-            conveyors[1].conveyorItems[3].canMove = true;
-            conveyors[2].conveyorItems[3].canMove = true;
+            conveyors[0].conveyorItems[2].canMove = true;
+            conveyors[1].conveyorItems[2].canMove = true;
+            conveyors[2].conveyorItems[2].canMove = true;
         }
     }
 

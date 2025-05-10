@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ConnectionPoint
   - StatWindow
+  - LevelUp
   layers:
   - Default
   - TransparentFX
