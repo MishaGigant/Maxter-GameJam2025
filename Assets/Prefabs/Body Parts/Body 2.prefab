@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8621048045783529158}
   - component: {fileID: 3520140554019327465}
   - component: {fileID: 3205964495665533317}
+  - component: {fileID: 1568264178387870400}
   m_Layer: 0
   m_Name: Body 2
   m_TagString: Untagged
@@ -160,7 +161,7 @@ Animator:
   m_GameObject: {fileID: 1714861033422848711}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1520015ae410eac498780720e44f0992, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -218,6 +219,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.88509107, y: 1.4276352}
   m_EdgeRadius: 0
+--- !u!114 &1568264178387870400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714861033422848711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4354a17f47350e84e918890277d6eeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
 --- !u!1 &2912532236188148820
 GameObject:
   m_ObjectHideFlags: 0

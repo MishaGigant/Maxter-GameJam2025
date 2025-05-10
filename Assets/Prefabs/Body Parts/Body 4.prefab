@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1148770899335209970}
   - component: {fileID: 4527883840697663830}
   - component: {fileID: 34025366924112874}
+  - component: {fileID: 4828597134146929049}
   m_Layer: 0
   m_Name: Body 4
   m_TagString: Untagged
@@ -173,6 +174,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   conveyor: {fileID: 0}
   currentPosition: 0
+  sprite: {fileID: 0}
   connector: {fileID: 6198624058495900759}
   cd: {fileID: 0}
   statWindow: {fileID: 0}
@@ -252,7 +254,7 @@ Animator:
   m_GameObject: {fileID: 7277442480428436819}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: a96ab89c344affa40a4ee8064ad61a06, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -264,6 +266,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4828597134146929049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277442480428436819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4354a17f47350e84e918890277d6eeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
 --- !u!1 &8553864943322570935
 GameObject:
   m_ObjectHideFlags: 0

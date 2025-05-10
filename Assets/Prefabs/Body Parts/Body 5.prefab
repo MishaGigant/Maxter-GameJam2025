@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 616824841351409021}
   - component: {fileID: 31578727611939747}
   - component: {fileID: 760838343675860632}
+  - component: {fileID: 535007289018166608}
   m_Layer: 0
   m_Name: Body 5
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1302339636875281614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.189965, y: -1.0145546, z: 0.0731495}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54,6 +55,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   conveyor: {fileID: 0}
   currentPosition: 0
+  sprite: {fileID: 0}
   connector: {fileID: 4485559186183943816}
   cd: {fileID: 0}
   statWindow: {fileID: 0}
@@ -133,7 +135,7 @@ Animator:
   m_GameObject: {fileID: 1302339636875281614}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 525e9f2a0acfa27478e112516056e527, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -145,6 +147,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &535007289018166608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302339636875281614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4354a17f47350e84e918890277d6eeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
 --- !u!1 &3836432789637494364
 GameObject:
   m_ObjectHideFlags: 0

@@ -83,7 +83,7 @@ public class Monster : MonoBehaviour
                 if (otherMonster.team != team) // Противник
                 {
                     isMoving = false;
-                    //animator.SetBool("isMoving", false);
+                    animator.SetBool("isMoving", false);
                     currentTarget = otherMonster;
                     isAttacking = true;
                 }
@@ -91,7 +91,7 @@ public class Monster : MonoBehaviour
                 {
                     // Стоим на месте, пока союзник не уйдёт
                     isMoving = false;
-                    //animator.SetBool("isMoving", false);
+                    animator.SetBool("isMoving", false);
                 }
             }
         }
@@ -99,7 +99,7 @@ public class Monster : MonoBehaviour
         {
             isMoving = true;
             isAttacking = false;
-            //animator.SetBool("isMoving", true);
+            animator.SetBool("isMoving", true);
         }
     }
 
@@ -184,6 +184,7 @@ public class Monster : MonoBehaviour
         itemConstantStats.Add("Body", body.itemStats.constantStat);
         rayDetectionPos = body.rayCastPoint;
         animator = body.GetComponent<Animator>();
+        body.GetComponent<AttackCatcher>().monster = this ;
 
         head = Instantiate(headToSet, body.connector.position, Quaternion.identity, this.transform);
         SetStats(headToSet);
