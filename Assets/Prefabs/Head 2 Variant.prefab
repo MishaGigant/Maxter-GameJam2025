@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 727103975518740728, guid: 36667c3764658144694c9b90b71d2c75, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: -1265412466643544962, guid: 8a07d4c5ac8a9b64a8f1932ada2ded6b, type: 3}
+    - target: {fileID: 727103975518740728, guid: 36667c3764658144694c9b90b71d2c75, type: 3}
       propertyPath: itemName
       value: "\u0413\u0430\u0431\u0440\u0438\u0435\u043B\u044C"
       objectReference: {fileID: 0}

@@ -14,13 +14,12 @@ public class Monster : MonoBehaviour
         {NormalStats.CritChance, 0},
         {NormalStats.CritDamage, 0},
     };
+    public Dictionary<string, ItemConstantStats> itemConstantStats = new Dictionary<string, ItemConstantStats>();
 
     public enum Team { Player, Enemy }
     public Team team;
     public float attackRange = 1f;
     public float attackRate = 2f;
-
-    public LayerMask entityLayer;
 
     public Transform rayDetectionPos;
 
@@ -32,8 +31,6 @@ public class Monster : MonoBehaviour
     private Monster currentTarget;
     public void Start()
     {
-
-        attackRange = 3f;
         timeBtwAttack = attackRate;
 
         if (team == Team.Player)
@@ -70,7 +67,7 @@ public class Monster : MonoBehaviour
     private void CheckForObstacles()
     {
         Vector2 rayDirection = facingRight ? Vector2.right : Vector2.left;
-        RaycastHit2D hit = Physics2D.Raycast(rayDetectionPos.position, rayDirection, attackRange, entityLayer);
+        RaycastHit2D hit = Physics2D.Raycast(rayDetectionPos.position, rayDirection, attackRange);
 
         if (hit.collider != null)
         {
@@ -152,22 +149,29 @@ public class Monster : MonoBehaviour
         body = Instantiate(bodyToSet, bodyPosition.position, Quaternion.identity, this.transform);
         SetStats(bodyToSet);
         body.isCreated = true;
+        itemConstantStats.Add("Body", body.itemStats.constantStat);
         rayDetectionPos = body.rayCastPoint;
         animator = body.GetComponent<Animator>();
 
         head = Instantiate(headToSet, body.connector.position, Quaternion.identity, this.transform);
         SetStats(headToSet);
         head.isCreated = true;
+        itemConstantStats.Add("Head", head.itemStats.constantStat);
 
         hat = Instantiate(hatToSet, head.connector.position, Quaternion.identity, this.transform);
         SetStats(hatToSet);
         hat.isCreated = true;
+        itemConstantStats.Add("Hat", hat.itemStats.constantStat);
 
+        CheckEachStat();
+
+        string message = "MonsterStats:\n";
         for (int i = 0; i < monsterStats.Count; i++)
         {
-            Debug.Log((NormalStats)i + " is " + monsterStats[(NormalStats)i]);
+            message += (NormalStats)i + " is " + monsterStats[(NormalStats)i] + "\n";
         }
 
+        Debug.Log(message);
 
         if (team == Team.Player)
             facingRight = true;
@@ -186,5 +190,12 @@ public class Monster : MonoBehaviour
         monsterStats[item.itemStats.secondStat] += item.itemStats.secondStatValue;
         monsterStats[item.itemStats.randomStat] += item.itemStats.randomStatValue;
     }
-
+    public void CheckEachStat()
+    {
+        for (int i = 0; i < monsterStats.Count;i++)
+        {
+            if (monsterStats[(NormalStats)i] <= 0)
+                monsterStats[(NormalStats)i] = 1;
+        }
+    }
 }

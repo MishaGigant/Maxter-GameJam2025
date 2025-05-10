@@ -17,6 +17,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 727103975518740728, guid: 36667c3764658144694c9b90b71d2c75, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: -792925753, guid: 57ebd3b6dbce4004ba2893628fd74f2a, type: 3}
+    - target: {fileID: 727103975518740728, guid: 36667c3764658144694c9b90b71d2c75, type: 3}
       propertyPath: itemName
       value: "\u0424\u0440\u0435\u0434\u0434\u0438"
       objectReference: {fileID: 0}

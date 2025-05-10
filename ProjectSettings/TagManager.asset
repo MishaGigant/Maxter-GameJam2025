@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ConnectionPoint
   - StatWindow
+  - EnemyInfoTabel
   layers:
   - Default
   - TransparentFX

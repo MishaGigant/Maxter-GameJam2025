@@ -77,6 +77,10 @@ PrefabInstance:
       value: 0.714
       objectReference: {fileID: 0}
     - target: {fileID: 5696551422439513552, guid: eebcc8b4d83ba9b4a8ccc01d819f621d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: -1423308509, guid: 4507345a59550d743a5dee8ac8af1364, type: 3}
+    - target: {fileID: 5696551422439513552, guid: eebcc8b4d83ba9b4a8ccc01d819f621d, type: 3}
       propertyPath: itemName
       value: "\u041C\u0438\u0448\u043A\u0430"
       objectReference: {fileID: 0}
